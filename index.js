@@ -23,6 +23,8 @@ const { readFileSync, statSync } = require('fs');
                 secretAccessKey: AWS_SECRET_ACCESS_KEY_ID,
             },
         })
+
+        core.info('login with success!')
     
         const stat = statSync(`${localPathUpload}`)
     
@@ -33,7 +35,9 @@ const { readFileSync, statSync } = require('fs');
         const file = readFileSync(`./${localPathUpload}.zip`)
     
         const splitPath = localPathUpload.split('/')
+
         const name = splitPath.length === 0 ? localPathUpload : splitPath.pop()
+        name += '.zip'
 
         const bucketEndsWithSlash = bucketPathUpload.endsWith('/')
     
@@ -51,7 +55,7 @@ const { readFileSync, statSync } = require('fs');
     
         const type = isDirectory ? 'file' : 'folder'
     
-        core.info(`upload ${type} with success`)
+        core.info(`upload ${type} with success!`)
     } catch (error) {
         core.setFailed(error.message);
     }
