@@ -6,6 +6,11 @@ inputs:
     description: 'Where to upload the file or folder'
     required: true
 
+  AWS_REGION:
+    description: 'Region to connect on S3 and upload file or folder'
+    required: false
+    default: "us-east-1"
+
   AWS_SECRET_ACCESS_KEY:
     required: true
     description: "AWS Secret Access Key to connect on AWS"
