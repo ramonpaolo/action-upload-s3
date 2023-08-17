@@ -24,18 +24,13 @@ const { readFileSync, statSync } = require('fs');
             },
         })
     
-        const stat = statSync(`./${localPathUpload}`)
+        const stat = statSync(`${localPathUpload}`)
     
         const isDirectory = stat.isDirectory()
     
-        if (isDirectory)
-            execSync(`tar -z ./${localPathUpload}`)
-        else
-            execSync(`gzip ./${localPathUpload}`)
+        execSync(`tar -czvf ${localPathUpload}.zip ${localPathUpload}`)
     
-        const extensionFile = isDirectory ? 'tar.gz' : 'zip'
-    
-        const file = readFileSync(`./${localPathUpload}.${extensionFile}`)
+        const file = readFileSync(`./${localPathUpload}.zip`)
     
         const splitPath = localPathUpload.split('/')
         const name = splitPath.length === 0 ? localPathUpload : splitPath.pop()
