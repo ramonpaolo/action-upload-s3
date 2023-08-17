@@ -47284,18 +47284,13 @@ const { readFileSync, statSync } = __nccwpck_require__(57147);
             },
         })
     
-        const stat = statSync(`./${localPathUpload}`)
+        const stat = statSync(`${localPathUpload}`)
     
         const isDirectory = stat.isDirectory()
     
-        if (isDirectory)
-            execSync(`tar -z ./${localPathUpload}`)
-        else
-            execSync(`gzip ./${localPathUpload}`)
+        execSync(`tar -czvf ${localPathUpload}.zip ${localPathUpload}`)
     
-        const extensionFile = isDirectory ? 'tar.gz' : 'zip'
-    
-        const file = readFileSync(`./${localPathUpload}.${extensionFile}`)
+        const file = readFileSync(`./${localPathUpload}.zip`)
     
         const splitPath = localPathUpload.split('/')
         const name = splitPath.length === 0 ? localPathUpload : splitPath.pop()
@@ -47303,7 +47298,7 @@ const { readFileSync, statSync } = __nccwpck_require__(57147);
         const command = new s3.PutObjectCommand({
             Bucket: AWS_BUCKET_NAME,
             Body: file,
-            Tagging: `Hostname=${hostname()}&Source=github-actions`,
+            Tagging: `Source=github-actions`,
             ServerSideEncryption: 'AES256',
             Key: `${bucketPathUpload}/${name}`,
             ACL: 'public-read',
