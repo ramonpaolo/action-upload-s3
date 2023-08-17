@@ -47284,7 +47284,7 @@ const { readFileSync, statSync } = __nccwpck_require__(57147);
             },
         })
     
-        const stat = statSync(`./${localPathUpload}`)
+        const stat = statSync(`${localPathUpload}`)
     
         const isDirectory = stat.isDirectory()
     

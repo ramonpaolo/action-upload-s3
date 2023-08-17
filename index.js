@@ -24,7 +24,7 @@ const { readFileSync, statSync } = require('fs');
             },
         })
     
-        const stat = statSync(`./${localPathUpload}`)
+        const stat = statSync(`${localPathUpload}`)
     
         const isDirectory = stat.isDirectory()
     
