@@ -1,0 +1,27 @@
+{
+  "name": "action-upload-s3",
+  "version": "0.0.1",
+  "description": "Action to upload a file or folders to a bucket on AWS S3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramonpaolo/action-upload-s3.git"
+  },
+  "keywords": [
+    "actions",
+    "github-actions",
+    "node",
+    "s3",
+    "upload",
+    "lambda"
+  ],
+  "author": "Ramon Paolo Maram",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ramonpaolo/action-upload-s3/issues"
+  },
+  "homepage": "https://github.com/ramonpaolo/action-upload-s3#readme"
+}
