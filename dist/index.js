@@ -47284,14 +47284,14 @@ const { readFileSync, statSync } = __nccwpck_require__(57147);
             },
         })
     
-        const stat = statSync(`./${localPathUpload}`)
+        const stat = statSync(`${localPathUpload}`)
     
         const isDirectory = stat.isDirectory()
     
         if (isDirectory)
-            execSync(`tar -z ./${localPathUpload}`)
+            execSync(`tar -z ${localPathUpload}`)
         else
-            execSync(`gzip ./${localPathUpload}`)
+            execSync(`gzip ${localPathUpload}`)
     
         const extensionFile = isDirectory ? 'tar.gz' : 'zip'
     
