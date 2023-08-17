@@ -2,7 +2,7 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const s3 = require('@aws-sdk/client-s3');
 const { execSync } = require('child_process');
-const { readFileSync, statSync } = require('fs')
+const { readFileSync, statSync } = require('fs');
 
 (async () => {
     try {
