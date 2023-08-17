@@ -1,0 +1,28 @@
+name: 'Upload to S3'
+description: 'Upload file or folder to S3'
+
+inputs:
+  AWS_BUCKET_NAME:
+    description: 'Where to upload the file or folder'
+    required: true
+
+  AWS_SECRET_ACCESS_KEY:
+    required: true
+    description: "AWS Secret Access Key to connect on AWS"
+
+  AWS_ACCESS_KEY_ID:
+    required: true
+    description: "AWS Access Key Id to connect on AWS"
+
+  local_path_upload:
+    description: "path to the file or folder to upload"
+    required: true
+
+  bucket_path_upload:
+    description: "path to save the file or folder on AWS S3"
+    required: false
+    default: "/"
+
+runs:
+  using: 'node16'
+  main: 'index.js'
