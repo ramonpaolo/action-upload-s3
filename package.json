@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/ramonpaolo/action-upload-s3/issues"
   },
-  "homepage": "https://github.com/ramonpaolo/action-upload-s3#readme"
+  "homepage": "https://github.com/ramonpaolo/action-upload-s3#readme",
+  "engines": {
+    "node": "16.x"
+  }
 }
