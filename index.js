@@ -3,7 +3,6 @@ const github = require('@actions/github');
 const s3 = require('@aws-sdk/client-s3');
 const { execSync } = require('child_process');
 const { readFileSync, statSync, } = require('fs');
-const { path } = require('path');
 
 (async () => {
     try {
@@ -43,7 +42,7 @@ const { path } = require('path');
     
         const command = new s3.PutObjectCommand({
             Bucket: AWS_BUCKET_NAME,
-            Body: file.buffer,
+            Body: file,
             Tagging: `Source=github-actions`,
             ServerSideEncryption: 'AES256',
             Key: bucketEndsWithSlash ? `${bucketPathUpload}${name}` : `${bucketPathUpload}/${name}`,

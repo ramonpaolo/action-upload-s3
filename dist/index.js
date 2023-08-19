@@ -47263,7 +47263,6 @@ const github = __nccwpck_require__(95438);
 const s3 = __nccwpck_require__(19250);
 const { execSync } = __nccwpck_require__(32081);
 const { readFileSync, statSync, } = __nccwpck_require__(57147);
-const { path } = __nccwpck_require__(71017);
 
 (async () => {
     try {
@@ -47303,7 +47302,7 @@ const { path } = __nccwpck_require__(71017);
     
         const command = new s3.PutObjectCommand({
             Bucket: AWS_BUCKET_NAME,
-            Body: file.buffer,
+            Body: file,
             Tagging: `Source=github-actions`,
             ServerSideEncryption: 'AES256',
             Key: bucketEndsWithSlash ? `${bucketPathUpload}${name}` : `${bucketPathUpload}/${name}`,
