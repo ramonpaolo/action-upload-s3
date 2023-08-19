@@ -17,6 +17,10 @@ const { zip } = require('./src/zip');
         const nameToSaveOnS3 = core.getInput('name_to_save_on_s3');
         const isDirectory = core.getInput('is_directory');
 
+        const aclObject = core.getInput('acl')
+        const storageClassObject = core.getInput('storage_class');
+        const tags = core.getInput('tags');
+
         const needZip = core.getBooleanInput('zip');
 
         if (isDirectory && !needZip) {
@@ -53,11 +57,11 @@ const { zip } = require('./src/zip');
         const command = new s3.PutObjectCommand({
             Bucket: AWS_BUCKET_NAME,
             Body: file,
-            Tagging: `Source=github-actions`,
+            Tagging: tags,
             ServerSideEncryption: 'AES256',
             Key: key,
-            ACL: 'public-read',
-            StorageClass: 'STANDARD',
+            ACL: aclObject,
+            StorageClass: storageClassObject,
             ContentType: needZip ? 'application/zip' : undefined,
         })
 
