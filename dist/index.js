@@ -47290,7 +47290,7 @@ const { readFileSync, statSync, } = __nccwpck_require__(57147);
     
         const isDirectory = stat.isDirectory()
     
-        execSync(`tar -czvf ${localPathUpload}.zip ${localPathUpload}`)
+        execSync(`zip -r ${localPathUpload}.zip ${localPathUpload}`)
     
         const file = readFileSync(`./${localPathUpload}.zip`)
     

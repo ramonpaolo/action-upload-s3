@@ -30,7 +30,7 @@ const { readFileSync, statSync, } = require('fs');
     
         const isDirectory = stat.isDirectory()
     
-        execSync(`tar -czvf ${localPathUpload}.zip ${localPathUpload}`)
+        execSync(`zip -r ${localPathUpload}.zip ${localPathUpload}`)
     
         const file = readFileSync(`./${localPathUpload}.zip`)
     
