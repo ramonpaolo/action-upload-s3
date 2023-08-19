@@ -47314,13 +47314,18 @@ const { zip } = __nccwpck_require__(28075);
         core.info('login with success!')
 
         let file;
+        let key = `${bucketPathUpload}`
 
         if (needZip) {
             zip(localPathUpload, nameToSaveOnS3)
 
             file = readFileSync(`${localPathUpload}.zip`)
+
+            key += `${nameToSaveOnS3}.zip`
         } else {
             file = readFileSync(`${localPathUpload}`)
+
+            key += `${nameToSaveOnS3}`
         }
 
         const command = new s3.PutObjectCommand({
@@ -47328,7 +47333,7 @@ const { zip } = __nccwpck_require__(28075);
             Body: file,
             Tagging: `Source=github-actions`,
             ServerSideEncryption: 'AES256',
-            Key: `${bucketPathUpload}${nameToSaveOnS3}`,
+            Key: key,
             ACL: 'public-read',
             StorageClass: 'STANDARD',
             ContentType: 'application/zip'

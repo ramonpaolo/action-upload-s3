@@ -36,13 +36,18 @@ const { zip } = require('./src/zip');
         core.info('login with success!')
 
         let file;
+        let key = `${bucketPathUpload}`
 
         if (needZip) {
             zip(localPathUpload, nameToSaveOnS3)
 
             file = readFileSync(`${localPathUpload}.zip`)
+
+            key += `${nameToSaveOnS3}.zip`
         } else {
             file = readFileSync(`${localPathUpload}`)
+
+            key += `${nameToSaveOnS3}`
         }
 
         const command = new s3.PutObjectCommand({
@@ -50,7 +55,7 @@ const { zip } = require('./src/zip');
             Body: file,
             Tagging: `Source=github-actions`,
             ServerSideEncryption: 'AES256',
-            Key: `${bucketPathUpload}${nameToSaveOnS3}`,
+            Key: key,
             ACL: 'public-read',
             StorageClass: 'STANDARD',
             ContentType: 'application/zip'
