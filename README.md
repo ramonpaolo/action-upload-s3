@@ -138,3 +138,10 @@ Nothing
         # tags to put on object
         tags: "Source=github-actions&Environment=${{ env.ENVIRONMENT }}"
 ```
+
+### How the file will be saved in S3
+
+Here is an example of how the file will be saved in S3(with tags and metadata) with the default YAML described below.
+
+<img src="./image-list-files.png" alt="print how the file will be saved by default">
+<img src="./image-attributes.png" alt="print how the tags and metadata will show in AWS S3 console">
