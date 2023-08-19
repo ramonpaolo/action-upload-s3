@@ -47336,7 +47336,7 @@ const { zip } = __nccwpck_require__(28075);
             Key: key,
             ACL: 'public-read',
             StorageClass: 'STANDARD',
-            ContentType: 'application/zip'
+            ContentType: needZip ? 'application/zip' : undefined,
         })
 
         await s3Client.send(command)
