@@ -50,6 +50,8 @@ Reference: [Link](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/client/
 
 **Optional** Need to be ziped before send to S3. Default: `true`
 
+When file or folder is ziped, automatically the key saved in S3, will have `.zip` how the extension.
+
 ### `name_to_save_on_s3`
 
 **Required** The name of file or folder to save in S3.
@@ -72,5 +74,5 @@ Nothing
         bucket_path_upload: / # path to upload bucket on aws s3
         is_directory: false # is directory to read and upload
         zip: true # want to zip file/folder before send to S3
-        name_to_save_on_s3: "main.py.zip" # the name of key/object to store in S3
+        name_to_save_on_s3: "main.py" # the name of key/object to store in S3
 ```
