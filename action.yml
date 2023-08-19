@@ -28,6 +28,20 @@ inputs:
     required: false
     default: "/"
 
+  is_directory:
+    description: "is directory to upload or not"
+    required: false
+    default: "false"
+
+  zip:
+    description: "need zip the file/folder"
+    required: false
+    default: "true"
+
+  name_to_save_on_s3:
+    description: "the name of folder or file that be saved in s3"
+    required: true
+
 runs:
   using: 'node16'
   main: 'dist/index.js'
