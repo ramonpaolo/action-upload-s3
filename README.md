@@ -56,23 +56,85 @@ When file or folder is ziped, automatically the key saved in S3, will have `.zip
 
 **Required** The name of file or folder to save in S3.
 
+### `acl`
+
+**Optional** The type of ACL to save the object. Default: `"public-read"`
+
+### `storage_class`
+
+**Optional** The type of Storage Class to save the object. Default: `"STANDARD"`
+
+### `tags`
+
+**Optional** The tags to put on object. Default: `"Source=github-actions&Environment=production"`
+
 ## Outputs
 
 Nothing
 
 ## Example usage
 
+### Basic Usage
+
 ```yaml
     - name: Upload File to AWS S3
-      uses: ramonpaolo/action-upload-s3@v0.0.13
+      uses: ramonpaolo/action-upload-s3@main
       with:
         AWS_BUCKET_NAME: ${{ secrets.AWS_BUCKET_NAME }}
         AWS_REGION: us-east-1
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        local_path_upload: ./main.py # example local file to upload
-        bucket_path_upload: / # path to upload bucket on aws s3
-        is_directory: false # is directory to read and upload
-        zip: true # want to zip file/folder before send to S3
-        name_to_save_on_s3: "main.py" # the name of key/object to store in S3
+
+        # path of local file to upload
+        local_path_upload: ./main.py
+
+        # path to upload bucket on aws s3
+        bucket_path_upload: /
+        
+        # the name of key/object to store in S3
+        name_to_save_on_s3: "main.py"
+```
+
+### Complete Usage
+
+```yaml
+  strategy:
+    matrix:
+      env: ["staging", "production"]
+
+  env:
+    ENVIRONMENT: ${{ matrix.env }}
+
+  steps:
+    - name: Upload File to AWS S3
+      uses: ramonpaolo/action-upload-s3@main
+      with:
+        AWS_BUCKET_NAME: ${{ secrets.AWS_BUCKET_NAME }}
+        AWS_REGION: us-east-1
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+
+        # path of local file to upload
+        local_path_upload: ./main.py
+
+        # path to upload bucket on aws s3
+        bucket_path_upload: /
+        
+        # is directory to read and upload
+        is_directory: false
+        
+        # want to zip file/folder before send to S3
+        zip: true
+        
+        # the name of key/object to store in S3
+        name_to_save_on_s3: "main.py"
+        
+        # the ACL to allow access
+        acl: "public-read"
+        
+        # the storage class to save the object
+        storage_class: "STANDARD"
+                                                
+        # tags to put on object
+        tags: "Source=github-actions&Environment=${{ env.ENVIRONMENT }}"
 ```

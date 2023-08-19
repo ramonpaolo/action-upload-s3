@@ -42,6 +42,21 @@ inputs:
     description: "the name of folder or file that be saved in s3"
     required: true
 
+  acl:
+    description: "the ACL to save the object on S3"
+    required: false
+    default: "public-read"
+
+  storage_class:
+    description: "the type of storage class to save in s3"
+    required: false
+    default: "STANDARD"
+
+  tags:
+    description: "the tags to put on object"
+    required: false
+    default: "Source=github-actions&Environment=production"
+
 runs:
   using: 'node16'
   main: 'dist/index.js'
