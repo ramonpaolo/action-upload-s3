@@ -42,6 +42,18 @@ Reference: [Link](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/client/
 
 **Optional** The bucket path to upload the file or folder on AWS S3. Default: `"/"`
 
+### `is_directory`
+
+**Optional** Is a folder to upload on s3. Default: `false`
+
+### `zip`
+
+**Optional** Need to be ziped before send to S3. Default: `true`
+
+### `name_to_save_on_s3`
+
+**Required** The name of file or folder to save in S3.
+
 ## Outputs
 
 Nothing
@@ -58,4 +70,7 @@ Nothing
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         local_path_upload: ./main.py # example local file to upload
         bucket_path_upload: / # path to upload bucket on aws s3
+        is_directory: false # is directory to read and upload
+        zip: true # want to zip file/folder before send to S3
+        name_to_save_on_s3: "main.py.zip" # the name of key/object to store in S3
 ```
