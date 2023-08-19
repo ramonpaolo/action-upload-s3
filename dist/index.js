@@ -47262,7 +47262,8 @@ const core = __nccwpck_require__(42186);
 const github = __nccwpck_require__(95438);
 const s3 = __nccwpck_require__(19250);
 const { execSync } = __nccwpck_require__(32081);
-const { readFileSync, statSync } = __nccwpck_require__(57147);
+const { readFileSync, statSync, } = __nccwpck_require__(57147);
+const { path } = __nccwpck_require__(71017);
 
 (async () => {
     try {
@@ -47308,6 +47309,7 @@ const { readFileSync, statSync } = __nccwpck_require__(57147);
             Key: bucketEndsWithSlash ? `${bucketPathUpload}${name}` : `${bucketPathUpload}/${name}`,
             ACL: 'public-read',
             StorageClass: 'STANDARD',
+            ContentType: 'application/zip'
         })
     
         await s3Client.send(command)

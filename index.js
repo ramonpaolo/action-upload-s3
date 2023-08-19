@@ -2,7 +2,8 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const s3 = require('@aws-sdk/client-s3');
 const { execSync } = require('child_process');
-const { readFileSync, statSync } = require('fs');
+const { readFileSync, statSync, } = require('fs');
+const { path } = require('path');
 
 (async () => {
     try {
@@ -48,6 +49,7 @@ const { readFileSync, statSync } = require('fs');
             Key: bucketEndsWithSlash ? `${bucketPathUpload}${name}` : `${bucketPathUpload}/${name}`,
             ACL: 'public-read',
             StorageClass: 'STANDARD',
+            ContentType: 'application/zip'
         })
     
         await s3Client.send(command)
