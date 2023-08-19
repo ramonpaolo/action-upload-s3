@@ -50,7 +50,7 @@ const { zip } = require('./src/zip');
             Body: file,
             Tagging: `Source=github-actions`,
             ServerSideEncryption: 'AES256',
-            Key: `${bucketPathUpload}/${nameToSaveOnS3}`,
+            Key: `${bucketPathUpload}${nameToSaveOnS3}`,
             ACL: 'public-read',
             StorageClass: 'STANDARD',
             ContentType: 'application/zip'

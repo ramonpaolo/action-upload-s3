@@ -47328,7 +47328,7 @@ const { zip } = __nccwpck_require__(28075);
             Body: file,
             Tagging: `Source=github-actions`,
             ServerSideEncryption: 'AES256',
-            Key: `${bucketPathUpload}/${nameToSaveOnS3}`,
+            Key: `${bucketPathUpload}${nameToSaveOnS3}`,
             ACL: 'public-read',
             StorageClass: 'STANDARD',
             ContentType: 'application/zip'
