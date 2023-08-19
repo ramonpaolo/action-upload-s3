@@ -47319,7 +47319,7 @@ const { zip } = __nccwpck_require__(28075);
         if (needZip) {
             zip(localPathUpload, nameToSaveOnS3)
 
-            file = readFileSync(`${localPathUpload}.zip`)
+            file = readFileSync(`${nameToSaveOnS3}.zip`)
 
             key += `${nameToSaveOnS3}.zip`
         } else {

@@ -41,7 +41,7 @@ const { zip } = require('./src/zip');
         if (needZip) {
             zip(localPathUpload, nameToSaveOnS3)
 
-            file = readFileSync(`${localPathUpload}.zip`)
+            file = readFileSync(`${nameToSaveOnS3}.zip`)
 
             key += `${nameToSaveOnS3}.zip`
         } else {
