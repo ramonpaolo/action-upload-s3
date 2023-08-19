@@ -47302,7 +47302,7 @@ const { readFileSync, statSync } = __nccwpck_require__(57147);
     
         const command = new s3.PutObjectCommand({
             Bucket: AWS_BUCKET_NAME,
-            Body: file,
+            Body: file.buffer,
             Tagging: `Source=github-actions`,
             ServerSideEncryption: 'AES256',
             Key: bucketEndsWithSlash ? `${bucketPathUpload}${name}` : `${bucketPathUpload}/${name}`,
