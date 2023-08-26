@@ -1,6 +1,6 @@
 {
   "name": "action-upload-s3",
-  "version": "0.0.1",
+  "version": "0.3.1",
   "description": "Action to upload a file or folders to a bucket on AWS S3",
   "main": "index.js",
   "scripts": {
