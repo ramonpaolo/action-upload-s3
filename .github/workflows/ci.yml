@@ -1,18 +1,25 @@
 name: "Continuos Integration"
 
 on:
-    push: 
-        tags:
-            - v[0-9]{1,4}.[0-9]{1,4}.[0-9]{1,4}
+  push: 
+    tags:
+      - v[0-9]+.[0-9]+.[0-9]+
 
 jobs:
   bump-version:
     runs-on: ubuntu-latest
+
+    permissions: 
+      actions: 
+        write
+      contents: 
+        write
+
     steps:
       - uses: actions/checkout@v3.0.0
 
       - name: Bump version of package.json
-        uses: ramonpaolo/bump-version@v2.2.4
+        uses: ramonpaolo/bump-version@v2.3.1
         with:
             tag: ${{ github.ref_name }}
             commit: true
